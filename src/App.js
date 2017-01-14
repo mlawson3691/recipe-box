@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ListComponent from './components/ListComponent/App.js';
 import DisplayComponent from './components/DisplayComponent/App.js';
+import AddRecipeComponent from './components/AddRecipeComponent/App.js';
 import './App.css';
 
 export default class App extends Component {
@@ -50,6 +51,9 @@ export default class App extends Component {
           <p>Recipe Box</p>
         </div>
         <div className="App-body">
+          <AddRecipeComponent
+
+          />
           <ListComponent
             recipes={this.state.recipes}
             selectedRecipe={this.state.selectedRecipe}

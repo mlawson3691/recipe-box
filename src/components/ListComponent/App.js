@@ -11,12 +11,10 @@ export default class ListComponent extends Component {
     return (
       <div id='list'>
         <h3>Choose a recipe</h3>
-        <hr />
         {this.props.recipes.map( (recipe, index) => {
           return (
-            <div key={index}>
-              <div className='recipe' onClick={this.chooseRecipe.bind(this, recipe)}>{recipe.name}</div>
-              <hr />
+            <div key={index} className='recipe' onClick={this.chooseRecipe.bind(this, recipe)}>
+              {recipe.name}
             </div>
           );
         }, this)}

@@ -1,0 +1,28 @@
+#addBtn {
+  width: 150px;
+  padding: 5px;
+  text-align: center;
+  margin: 30px auto;
+  cursor: pointer;
+
+  box-shadow: 3px 3px 3px #ddd;
+  border: 1px solid #444;
+  border-bottom: 2px solid #444;
+  border-right: 2px solid #444;
+  border-bottom-left-radius: 2px;
+  border-top-right-radius: 2px;
+
+  &:hover {
+    box-shadow: inset 3px 3px 3px #ddd, 3px 3px 3px #ddd;
+    text-shadow: 1px 1px 1px #ddd;
+  }
+
+  &:active {
+    background: #eee;
+    padding: 6px 4px 4px 6px;
+    box-shadow: inset 3px 3px 3px #ddd;
+    border: 1px solid #444;
+    border-top: 2px solid #555;
+    border-left: 2px solid #555;
+  }
+}
