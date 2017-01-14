@@ -7,6 +7,7 @@ export default class App extends Component {
 
   constructor(props) {
     super(props);
+    this.chooseRecipe = this.chooseRecipe.bind(this);
     this.state = {
       selectedRecipe: {
         'name': 'Brownies',
@@ -38,6 +39,10 @@ export default class App extends Component {
     };
   }
 
+  chooseRecipe(recipe, e) {
+    this.setState({selectedRecipe: recipe})
+  }
+
   render() {
     return (
       <div className="App">
@@ -47,6 +52,8 @@ export default class App extends Component {
         <div className="App-body">
           <ListComponent
             recipes={this.state.recipes}
+            selectedRecipe={this.state.selectedRecipe}
+            chooseRecipe={this.chooseRecipe}
           />
           <DisplayComponent
             selectedRecipe={this.state.selectedRecipe}

@@ -10,17 +10,17 @@ export default class DisplayComponent extends Component {
         <div id='details'>
           <h5>Ingredients</h5>
           <ul>
-            {this.props.selectedRecipe.ingredients.map((ingredient) => {
+            {this.props.selectedRecipe.ingredients.map((ingredient, index) => {
               return (
-                <li>{ingredient}</li>
+                <li key={index}>{ingredient}</li>
               );
             }, this)}
           </ul>
           <h5>Instructions</h5>
           <ol>
-            {this.props.selectedRecipe.instructions.map((instruction) => {
+            {this.props.selectedRecipe.instructions.map((instruction, index) => {
               return (
-                <li>{instruction}</li>
+                <li key={index}>{instruction}</li>
               );
             }, this)}
           </ol>
