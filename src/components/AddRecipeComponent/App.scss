@@ -1,9 +1,9 @@
-#addBtn {
-  width: 150px;
-  padding: 5px;
+.btn {
   text-align: center;
-  margin: 30px auto;
   cursor: pointer;
+  background: #fff;
+  outline: 0 !important;
+  padding: 5px;
 
   box-shadow: 3px 3px 3px #ddd;
   border: 1px solid #444;
@@ -24,5 +24,52 @@
     border: 1px solid #444;
     border-top: 2px solid #555;
     border-left: 2px solid #555;
+  }
+}
+
+#addBtn {
+  width: 150px;
+  margin: 30px auto;
+}
+
+#addForm {
+  width: 500px;
+  margin: 5px auto;
+  border: 1px solid #444;
+
+  div {
+    padding: 10px;
+  }
+
+  .form-header {
+    font-family: 'Fredericka the Great', cursive;
+    background: #444;
+    color: #fff;
+    font-size: 1.2em;
+  }
+
+  label {
+    font-family: 'Fredericka the Great', cursive;
+    font-size: 0.9em;
+  }
+
+  input[type='text'], textarea {
+    display: block;
+    width: 90%;
+    margin: 0 5% 10px 5%;
+    font-family: 'Amatic SC', cursive;
+    font-size: 1em;
+  }
+
+  textarea {
+    height: 200px;
+  }
+
+  input[type='submit'] {
+    font-family: 'Amatic SC', cursive;
+    font-size: 1em;
+    border-radius: 0;
+    width: 50%;
+    margin-left: 25%;
   }
 }

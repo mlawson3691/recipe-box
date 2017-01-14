@@ -8,7 +8,10 @@ export default class App extends Component {
 
   constructor(props) {
     super(props);
+
     this.chooseRecipe = this.chooseRecipe.bind(this);
+    this.addRecipe = this.addRecipe.bind(this);
+
     this.state = {
       selectedRecipe: {
         'name': 'Brownies',
@@ -44,6 +47,29 @@ export default class App extends Component {
     this.setState({selectedRecipe: recipe})
   }
 
+  addRecipe(name, ingredients, instructions) {
+    var recipesArray = this.state.recipes;
+    recipesArray.push({
+      'name': name,
+      'ingredients': ingredients,
+      'instructions': instructions
+    });
+
+    function alphabetize(a,b) {
+      if (a.name.toLowerCase() < b.name.toLowerCase()) {
+        return -1;
+      }
+      if (a.name.toLowerCase() > b.name.toLowerCase()) {
+        return 1;
+      }
+      return 0;
+    }
+
+    recipesArray = recipesArray.sort(alphabetize);
+
+    this.setState({recipes: recipesArray});
+  }
+
   render() {
     return (
       <div className="App">
@@ -52,7 +78,7 @@ export default class App extends Component {
         </div>
         <div className="App-body">
           <AddRecipeComponent
-
+            addRecipe={this.addRecipe}
           />
           <ListComponent
             recipes={this.state.recipes}
