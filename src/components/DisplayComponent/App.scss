@@ -1,0 +1,26 @@
+#display {
+  float: left;
+  width: 480px;
+  border: 1px solid #444;
+  color: #444;
+
+  h3 {
+    font-family: 'Fredericka the Great', cursive;
+    margin: 0;
+    padding: 15px 10px;
+    background: #444;
+    color: #eee;
+  }
+
+  h5 {
+    margin: 15px 0 0 0;
+  }
+
+  .name, h5 {
+    font-family: 'Fredericka the Great', cursive;
+  }
+
+  #details {
+    padding: 0 10px 10px 10px;
+  }
+}
