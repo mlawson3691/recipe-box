@@ -34,7 +34,7 @@
 
 #addForm {
   width: 500px;
-  margin: 5px auto;
+  margin: 15px auto;
   border: 1px solid #444;
 
   div {
@@ -46,6 +46,12 @@
     background: #444;
     color: #fff;
     font-size: 1.2em;
+
+    span {
+      float: right;
+      padding: 0 10px;
+      cursor: pointer;
+    }
   }
 
   label {

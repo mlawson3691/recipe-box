@@ -51,12 +51,15 @@ export default class AddRecipeComponent extends Component {
   render() {
     return (
       <div>
-        <div id='addBtn' className='btn' onClick={this.toggleForm.bind(this)}>Add a New Recipe</div>
+        {!this.state.showForm &&
+          <div id='addBtn' className='btn' onClick={this.toggleForm.bind(this)}>Add a New Recipe</div>
+        }
         {this.state.showForm &&
           <div id='addForm'>
             <form onSubmit={this.addRecipe}>
               <div className='form-header'>
                 Add a New Recipe
+                <span onClick={this.toggleForm.bind(this)}>X</span>
               </div>
               <div>
                 <label>
