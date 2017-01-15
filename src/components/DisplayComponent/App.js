@@ -9,28 +9,24 @@ export default class DisplayComponent extends Component {
     super(props);
 
     this.editRecipe = this.editRecipe.bind(this);
-
-    this.state = {
-      edit: false
-    };
   }
 
   toggleEdit(event) {
     event.stopPropagation();
-    var value = !this.state.edit;
-    this.setState({edit: value});
+    var value = !this.props.showEditForm;
+    this.props.toggleEditForm(value);
   }
 
   editRecipe(name, ingredients, instructions) {
     this.props.editRecipe(name, ingredients, instructions);
-    this.setState({edit: false});
+    this.props.toggleEditForm(false);
   }
 
   deleteRecipe(event) {
     event.stopPropagation();
     this.props.deleteRecipe(this.props.selectedRecipe);
-    if (this.state.edit) {
-      this.setState({edit: false});
+    if (this.props.showEditForm) {
+      this.props.toggleEditForm(false);
     }
   }
 
@@ -47,7 +43,7 @@ export default class DisplayComponent extends Component {
             <img onClick={this.toggleEdit.bind(this)} src='./images/edit.svg' alt='Edit Icon' />
           </h3>
         }
-        {this.props.selectedRecipe && !this.state.edit && !this.props.showAddForm &&
+        {this.props.selectedRecipe && !this.props.showEditForm && !this.props.showAddForm &&
           <div id='details'>
             <h5>Ingredients</h5>
             <ul>
@@ -67,7 +63,7 @@ export default class DisplayComponent extends Component {
             </ol>
           </div>
         }
-        {this.props.selectedRecipe && this.state.edit && !this.props.showAddForm &&
+        {this.props.selectedRecipe && this.props.showEditForm && !this.props.showAddForm &&
           <div id='details'>
             <EditRecipeComponent
               selectedRecipe={this.props.selectedRecipe}

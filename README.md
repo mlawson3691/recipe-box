@@ -37,6 +37,7 @@ Please report any bugs or issues to mlawson3691@gmail.com.
 * NPM
 * Create React App
 * Sass
+* Flaticon
 
 ### License
 
