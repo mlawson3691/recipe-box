@@ -3,7 +3,7 @@
   width: 480px;
   border: 1px solid #444;
   color: #444;
-  box-shadow: 2px 2px 2px #ddd;
+  box-shadow: 2px 2px 2px #666;
 
   h4 {
     text-align: center;
@@ -28,6 +28,7 @@
       cursor: pointer;
       width: 35px;
       margin-left: 20px;
+      background: #444;
 
       &:hover {
         opacity: 0.6;

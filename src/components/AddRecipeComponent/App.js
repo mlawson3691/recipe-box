@@ -12,17 +12,10 @@ export default class AddRecipeComponent extends Component {
     this.updateInstructions = this.updateInstructions.bind(this);
 
     this.state = {
-      showForm: false,
       newName: '',
       newIngredients: [],
       newInstructions: []
     };
-  }
-
-  toggleForm(event) {
-    event.stopPropagation();
-    var value = !this.state.showForm;
-    this.setState({showForm: value});
   }
 
   updateName(event) {
@@ -52,7 +45,6 @@ export default class AddRecipeComponent extends Component {
       <form id='addForm' onSubmit={this.addRecipe}>
         <div className='form-header'>
           Add a New Recipe
-          <span onClick={this.toggleForm.bind(this)}>X</span>
         </div>
         <div>
           <label>

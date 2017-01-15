@@ -39,16 +39,6 @@
     font-size: 1.2em;
     box-shadow: inset 2px 2px 2px #333;
     text-shadow: 2px 2px 2px #222;
-
-    span {
-      float: right;
-      padding: 0 10px;
-      cursor: pointer;
-
-      &:hover {
-        text-shadow: 3px 3px 3px #222;
-      }
-    }
   }
 
   label {
