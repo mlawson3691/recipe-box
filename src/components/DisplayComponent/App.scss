@@ -36,6 +36,18 @@
     }
   }
 
+  #confirmation {
+    div {
+      display: inline-block;
+      margin-top: 5px;
+    }
+
+    .btn {
+      width: 40px;
+      margin-left: 10px;
+    }
+  }
+
   #details {
     padding: 0 10px 10px 10px;
 

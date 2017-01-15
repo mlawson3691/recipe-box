@@ -13,9 +13,11 @@ export default class App extends Component {
     this.addRecipe = this.addRecipe.bind(this);
     this.toggleEditForm = this.toggleEditForm.bind(this);
     this.editRecipe = this.editRecipe.bind(this);
+    this.toggleDeleteConfirmation = this.toggleDeleteConfirmation.bind(this);
     this.deleteRecipe = this.deleteRecipe.bind(this);
 
     this.state = {
+      showDeleteConfirmation: false,
       showAddForm: false,
       showEditForm: false,
       selectedRecipe: null,
@@ -48,6 +50,7 @@ export default class App extends Component {
     this.setState({selectedRecipe: recipe});
     this.setState({showAddForm: false});
     this.setState({showEditForm: false});
+    this.setState({showDeleteConfirmation: false});
   }
 
   addClicked() {
@@ -97,6 +100,10 @@ export default class App extends Component {
     this.setState({selectedRecipe: editedRecipe});
   }
 
+  toggleDeleteConfirmation(value) {
+    this.setState({showDeleteConfirmation: value});
+  }
+
   deleteRecipe(recipe) {
     var arr = this.state.recipes;
     var index = arr.indexOf(recipe);
@@ -125,6 +132,8 @@ export default class App extends Component {
             showEditForm={this.state.showEditForm}
             toggleEditForm={this.toggleEditForm}
             editRecipe={this.editRecipe}
+            showDeleteConfirmation={this.state.showDeleteConfirmation}
+            toggleDeleteConfirmation={this.toggleDeleteConfirmation}
             deleteRecipe={this.deleteRecipe}
           />
         </div>
