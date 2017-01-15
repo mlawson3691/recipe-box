@@ -14,7 +14,8 @@ export default class AddRecipeComponent extends Component {
     this.state = {
       newName: '',
       newIngredients: [],
-      newInstructions: []
+      newInstructions: [],
+      error: null
     };
   }
 
@@ -36,8 +37,13 @@ export default class AddRecipeComponent extends Component {
 
   addRecipe(event) {
     event.preventDefault();
-    this.props.addRecipe(this.state.newName, this.state.newIngredients, this.state.newInstructions);
-    this.setState({showForm: false});
+    if (this.state.newName === '' || this.state.newIngredients[0] == false || this.state.newInstructions[0] == false) {
+      this.setState({error: 'Error: You must complete all fields before submitting your recipe'});
+    } else {
+      this.props.addRecipe(this.state.newName, this.state.newIngredients, this.state.newInstructions);
+      this.setState({showForm: false});
+      this.setState({error: null});
+    }
   }
 
   render() {
@@ -46,6 +52,11 @@ export default class AddRecipeComponent extends Component {
         <div className='form-header'>
           Add a New Recipe
         </div>
+        {this.state.error &&
+          <div className='error'>
+            {this.state.error}
+          </div>
+        }
         <div>
           <label>
             Recipe Name:

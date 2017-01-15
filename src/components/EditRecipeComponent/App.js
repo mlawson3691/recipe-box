@@ -35,12 +35,22 @@ export default class EditRecipeComponent extends Component {
 
   editRecipe(event) {
     event.preventDefault();
-    this.props.editRecipe(this.state.editedName, this.state.editedIngredients, this.state.editedInstructions);
+    if (this.state.editedName === '' || this.state.editedIngredients[0] == false || this.state.editedInstructions[0] == false) {
+      this.setState({error: 'Error: You must complete all fields before submitting your recipe'});
+    } else {
+      this.props.editRecipe(this.state.editedName, this.state.editedIngredients, this.state.editedInstructions);
+      this.setState({error: null});
+    }
   }
 
   render() {
     return (
       <form id='editForm' onSubmit={this.editRecipe}>
+        {this.state.error &&
+          <div className='error'>
+            {this.state.error}
+          </div>
+        }
         <div>
           <label>
             Recipe Name:
