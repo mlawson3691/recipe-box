@@ -7,6 +7,10 @@ export default class ListComponent extends Component {
     this.props.chooseRecipe(recipe);
   }
 
+  addClicked() {
+    this.props.addClicked();
+  }
+
   render() {
     return (
       <div id='list'>
@@ -18,6 +22,7 @@ export default class ListComponent extends Component {
             </div>
           );
         }, this)}
+        <div className='recipe addButton' onClick={this.addClicked.bind(this)}>Add a New Recipe</div>
       </div>
     );
   }

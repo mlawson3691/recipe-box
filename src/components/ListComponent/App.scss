@@ -13,6 +13,8 @@
     padding: 15px 0;
     background: #444;
     color: #eee;
+    box-shadow: inset 2px 2px 2px #333;
+    text-shadow: 2px 2px 2px #222;
   }
 
   .recipe {
@@ -23,6 +25,17 @@
     &:hover {
       box-shadow: inset 2px 2px 2px #ccc;
       text-shadow: 1px 1px 1px #ddd;
+    }
+  }
+
+  .addButton {
+    font-family: 'Fredericka the Great', cursive;
+    background: #444;
+    color: #eee;
+
+    &:hover {
+      box-shadow: inset 2px 2px 2px #333;
+      text-shadow: 2px 2px 2px #222;
     }
   }
 }

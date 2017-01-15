@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import EditRecipeComponent from './../EditRecipeComponent/App.js';
+import AddRecipeComponent from './../AddRecipeComponent/App.js';
 import './App.css';
 
 export default class DisplayComponent extends Component {
@@ -36,16 +37,17 @@ export default class DisplayComponent extends Component {
   render() {
     return (
       <div id='display'>
-        {this.props.selectedRecipe === null ? (
+        {this.props.selectedRecipe === null && !this.props.showAddForm &&
           <h4>Select a recipe to view from the list</h4>
-        ) : (
+        }
+        {this.props.selectedRecipe !== null && !this.props.showAddForm &&
           <h3 className='name'>
             {this.props.selectedRecipe.name}
             <img onClick={this.deleteRecipe.bind(this)} src='./images/delete.svg' alt='Delete Icon' />
             <img onClick={this.toggleEdit.bind(this)} src='./images/edit.svg' alt='Edit Icon' />
           </h3>
-        )}
-        {this.props.selectedRecipe && !this.state.edit &&
+        }
+        {this.props.selectedRecipe && !this.state.edit && !this.props.showAddForm &&
           <div id='details'>
             <h5>Ingredients</h5>
             <ul>
@@ -65,13 +67,18 @@ export default class DisplayComponent extends Component {
             </ol>
           </div>
         }
-        {this.props.selectedRecipe && this.state.edit &&
+        {this.props.selectedRecipe && this.state.edit && !this.props.showAddForm &&
           <div id='details'>
             <EditRecipeComponent
               selectedRecipe={this.props.selectedRecipe}
               editRecipe={this.editRecipe}
             />
           </div>
+        }
+        {this.props.showAddForm &&
+          <AddRecipeComponent
+            addRecipe={this.props.addRecipe}
+          />
         }
       </div>
     );

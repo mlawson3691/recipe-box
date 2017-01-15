@@ -10,11 +10,13 @@ export default class App extends Component {
     super(props);
 
     this.chooseRecipe = this.chooseRecipe.bind(this);
+    this.addClicked = this.addClicked.bind(this);
     this.addRecipe = this.addRecipe.bind(this);
     this.editRecipe = this.editRecipe.bind(this);
     this.deleteRecipe = this.deleteRecipe.bind(this);
 
     this.state = {
+      showAddForm: false,
       selectedRecipe: null,
       recipes: [
         {
@@ -42,16 +44,22 @@ export default class App extends Component {
   }
 
   chooseRecipe(recipe, e) {
-    this.setState({selectedRecipe: recipe})
+    this.setState({selectedRecipe: recipe});
+    this.setState({showAddForm: false});
+  }
+
+  addClicked() {
+    this.setState({showAddForm: true});
   }
 
   addRecipe(name, ingredients, instructions) {
-    var recipesArray = this.state.recipes;
-    recipesArray.push({
+    var newRecipe = {
       'name': name,
       'ingredients': ingredients,
       'instructions': instructions
-    });
+    };
+    var recipesArray = this.state.recipes;
+    recipesArray.push(newRecipe);
 
     function alphabetize(a,b) {
       if (a.name.toLowerCase() < b.name.toLowerCase()) {
@@ -66,6 +74,8 @@ export default class App extends Component {
     recipesArray = recipesArray.sort(alphabetize);
 
     this.setState({recipes: recipesArray});
+    this.setState({selectedRecipe: newRecipe});
+    this.setState({showAddForm: false});
   }
 
   editRecipe(name, ingredients, instructions) {
@@ -96,16 +106,16 @@ export default class App extends Component {
           <p>Recipe Box</p>
         </div>
         <div className="App-body">
-          <AddRecipeComponent
-            addRecipe={this.addRecipe}
-          />
           <ListComponent
             recipes={this.state.recipes}
             selectedRecipe={this.state.selectedRecipe}
             chooseRecipe={this.chooseRecipe}
+            addClicked={this.addClicked}
           />
           <DisplayComponent
             selectedRecipe={this.state.selectedRecipe}
+            showAddForm={this.state.showAddForm}
+            addRecipe={this.addRecipe}
             deleteRecipe={this.deleteRecipe}
             editRecipe={this.editRecipe}
           />
