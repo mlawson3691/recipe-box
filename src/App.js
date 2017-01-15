@@ -11,13 +11,11 @@ export default class App extends Component {
 
     this.chooseRecipe = this.chooseRecipe.bind(this);
     this.addRecipe = this.addRecipe.bind(this);
+    this.editRecipe = this.editRecipe.bind(this);
+    this.deleteRecipe = this.deleteRecipe.bind(this);
 
     this.state = {
-      selectedRecipe: {
-        'name': 'Brownies',
-        'ingredients': ['butter', 'sugar', 'eggs', 'flour', 'chocolate'],
-        'instructions': ['mix butter and sugar', 'add eggs', 'stir in flour and chocolate', 'bake']
-      },
+      selectedRecipe: null,
       recipes: [
         {
           'name': 'Brownies',
@@ -70,6 +68,27 @@ export default class App extends Component {
     this.setState({recipes: recipesArray});
   }
 
+  editRecipe(name, ingredients, instructions) {
+    var arr = this.state.recipes;
+    var index = arr.indexOf(this.state.selectedRecipe);
+    var editedRecipe = {
+      'name': name,
+      'ingredients': ingredients,
+      'instructions': instructions
+    };
+    arr[index] = editedRecipe;
+    this.setState({recipes: arr});
+    this.setState({selectedRecipe: editedRecipe});
+  }
+
+  deleteRecipe(recipe) {
+    var arr = this.state.recipes;
+    var index = arr.indexOf(recipe);
+    arr.splice(index,1);
+    this.setState({recipes: arr});
+    this.setState({selectedRecipe: null});
+  }
+
   render() {
     return (
       <div className="App">
@@ -87,6 +106,8 @@ export default class App extends Component {
           />
           <DisplayComponent
             selectedRecipe={this.state.selectedRecipe}
+            deleteRecipe={this.deleteRecipe}
+            editRecipe={this.editRecipe}
           />
         </div>
       </div>

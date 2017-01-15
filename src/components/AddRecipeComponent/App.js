@@ -10,7 +10,6 @@ export default class AddRecipeComponent extends Component {
     this.updateName = this.updateName.bind(this);
     this.updateIngredients = this.updateIngredients.bind(this);
     this.updateInstructions = this.updateInstructions.bind(this);
-    this.updateName = this.updateName.bind(this);
 
     this.state = {
       showForm: false,
@@ -51,40 +50,37 @@ export default class AddRecipeComponent extends Component {
   render() {
     return (
       <div>
-        {!this.state.showForm &&
+        {!this.state.showForm ? (
           <div id='addBtn' className='btn' onClick={this.toggleForm.bind(this)}>Add a New Recipe</div>
-        }
-        {this.state.showForm &&
-          <div id='addForm'>
-            <form onSubmit={this.addRecipe}>
-              <div className='form-header'>
-                Add a New Recipe
-                <span onClick={this.toggleForm.bind(this)}>X</span>
-              </div>
-              <div>
-                <label>
-                  Recipe Name:
-                  <input type='text' onChange={this.updateName} />
-                </label>
-              </div>
-              <div>
-                <label>
-                  Ingredients (enter one per line):
-                  <textarea onChange={this.updateIngredients} />
-                </label>
-              </div>
-              <div>
-                <label>
-                  Instructions (enter one per line):
-                  <textarea onChange={this.updateInstructions} />
-                </label>
-              </div>
-              <div>
-                <input className='btn' type='submit' value='Add Recipe' />
-              </div>
-            </form>
-          </div>
-        }
+        ) : (
+          <form id='addForm' onSubmit={this.addRecipe}>
+            <div className='form-header'>
+              Add a New Recipe
+              <span onClick={this.toggleForm.bind(this)}>X</span>
+            </div>
+            <div>
+              <label>
+                Recipe Name:
+                <input type='text' onChange={this.updateName} />
+              </label>
+            </div>
+            <div>
+              <label>
+                Ingredients (enter one per line):
+                <textarea onChange={this.updateIngredients} />
+              </label>
+            </div>
+            <div>
+              <label>
+                Instructions (enter one per line):
+                <textarea onChange={this.updateInstructions} />
+              </label>
+            </div>
+            <div>
+              <input className='btn' type='submit' value='Add Recipe' />
+            </div>
+          </form>
+        )}
       </div>
     );
   }
